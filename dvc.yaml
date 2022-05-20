@@ -1,0 +1,9 @@
+stages:
+  download:
+    cmd: wget -nd --no-parent -A "*.gz" -A "*.sql" -r "https://www.mirbase.org/ftp/CURRENT/database_files/" -P download/
+    outs:
+      - download/
+  process:
+    cmd: Rscript R/process.R
+    outs:
+      - data/
