@@ -1,4 +1,4 @@
-# [miRBase](https://www.mirbase.org/): the microRNA database
+# miRBase
 <a href="https://github.com/biobricks-ai/miRBase/actions"><img src="https://github.com/biobricks-ai/miRBase/actions/workflows/bricktools-check.yaml/badge.svg?branch=master"/></a>
 
 ## Description
