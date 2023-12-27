@@ -4,7 +4,7 @@ library(fs)
 library(stringr)
 library(dplyr)
 download_dir <- "download"
-data_dir <- "data"
+data_dir <- "brick"
 fs::dir_create(data_dir)
 
 # get col names for tables

@@ -11,7 +11,8 @@ stages:
   process:
     cmd: Rscript R/process.R
     outs:
-    - path: data/
-      md5: f3e2e97696ccbc9a0cda518df1129ae4.dir
-      size: 8094073
+    - path: brick/
+      hash: md5
+      md5: b9786b609aa4e8cb2858cbe765c57376.dir
+      size: 8094090
       nfiles: 17
