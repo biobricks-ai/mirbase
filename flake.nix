@@ -1,5 +1,5 @@
 {
-  description = "MedGen BioBrick";
+  description = "miRBase BioBrick";
 
   inputs = { dev-shell.url = "github:biobricks-ai/dev-shell"; };
 
