@@ -1,2 +1,5 @@
 /brick
 /download
+.R*
+.idea
+mirbase.Rproj
