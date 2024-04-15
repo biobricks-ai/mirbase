@@ -1,9 +1,19 @@
 stages:
   download:
-    cmd: wget -nd --no-parent -A "*.gz" -A "*.sql" -r "https://www.mirbase.org/ftp/CURRENT/database_files/" -P download/
+    cmd: bash stages/00_download.sh
+    deps:
+    - stages/00_download.sh
     outs:
       - download/
   process:
-    cmd: Rscript R/process.R
+    cmd: Rscript stages/01_process.R
+    deps:
+    - download/
+    - stages/01_process.R
     outs:
       - brick/
+  process_embl:
+    cmd: python3 stages/02_process_embl.py
+    deps:
+    - download/
+    - stages/02_process_embl.py
