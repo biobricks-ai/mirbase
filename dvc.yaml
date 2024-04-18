@@ -6,14 +6,11 @@ stages:
     outs:
       - download/
   process:
-    cmd: Rscript stages/01_process.R
+    cmd: |-
+      Rscript stages/01_process.R && python3 stages/02_process_embl.py
     deps:
     - download/
     - stages/01_process.R
+    - stages/02_process_embl.py
     outs:
       - brick/
-  process_embl:
-    cmd: python3 stages/02_process_embl.py
-    deps:
-    - download/
-    - stages/02_process_embl.py
