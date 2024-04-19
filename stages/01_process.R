@@ -17,9 +17,9 @@ clean_html <- function(html) {
 
 save_parquet <- function(file) {
     print(file)
-    path <- fs::path_ext_remove(file) |>
-        fs::path_ext_set("parquet") |>
-        fs::path_file()
+    path <- file |>
+        fs::path_file() |>
+        paste0(".", "parquet")
     file_ext <- file_ext(file)
     if (file_ext == "fa") {
 		print(file)
@@ -30,7 +30,7 @@ save_parquet <- function(file) {
             "end", "score", "strand", "phase", "attributes"
         ))
         arrow::write_parquet(df, fs::path(data_dir, path))
-    } else if (!grepl("dat|dead", file_ext)) {
+    } else if (!grepl("dat|dead|diff", file_ext)) {
         df <- vroom::vroom(file, delim = "\t")
         df <- df %>%
             rename_with(~ gsub("^#", "", .), 1)
