@@ -14,7 +14,7 @@ stages:
       size: 60033082
       nfiles: 37
   process:
-    cmd: Rscript stages/01_process.R
+    cmd: Rscript stages/01_process.R && python3 stages/02_process_embl.py
     deps:
     - path: download/
       hash: md5
@@ -23,13 +23,17 @@ stages:
       nfiles: 37
     - path: stages/01_process.R
       hash: md5
-      md5: 3b8635a7ab7d9b1f2c2e1f64d6f80f1f
-      size: 1162
+      md5: f096dd9791ce62a07702227739ca2519
+      size: 1141
+    - path: stages/02_process_embl.py
+      hash: md5
+      md5: 2724e54f9f31b58d795ed6b16c530946
+      size: 502
     outs:
     - path: brick/
       hash: md5
-      md5: 186794374779c52bb7cd166f330d9eeb.dir
-      size: 11571485
+      md5: 102dcd13ceb5033a79127445b3d3e5dc.dir
+      size: 14106494
       nfiles: 35
   process_embl:
     cmd: python3 stages/02_process_embl.py
