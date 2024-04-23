@@ -23,18 +23,18 @@ stages:
       nfiles: 37
     - path: stages/01_process.R
       hash: md5
-      md5: f096dd9791ce62a07702227739ca2519
-      size: 1141
+      md5: 19a3b0dfd2951e32f9e89bfc306c9995
+      size: 1146
     - path: stages/02_process_embl.py
       hash: md5
-      md5: 2724e54f9f31b58d795ed6b16c530946
-      size: 502
+      md5: 12ecd3379c05487d6109e961843493f8
+      size: 479
     outs:
     - path: brick/
       hash: md5
-      md5: 102dcd13ceb5033a79127445b3d3e5dc.dir
-      size: 14106494
-      nfiles: 35
+      md5: 839497b2761e88999b195e1ef5d3b727.dir
+      size: 13889587
+      nfiles: 34
   process_embl:
     cmd: python3 stages/02_process_embl.py
     deps:

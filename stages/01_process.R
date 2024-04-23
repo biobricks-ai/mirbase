@@ -30,7 +30,7 @@ save_parquet <- function(file) {
             "end", "score", "strand", "phase", "attributes"
         ))
         arrow::write_parquet(df, fs::path(data_dir, path))
-    } else if (!grepl("dat|dead|diff", file_ext)) {
+    } else if (!grepl("dat|dead|diff|html", file_ext)) {
         df <- vroom::vroom(file, delim = "\t")
         df <- df %>%
             rename_with(~ gsub("^#", "", .), 1)
