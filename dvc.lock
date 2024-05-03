@@ -1,18 +1,49 @@
 schema: '2.0'
 stages:
   download:
-    cmd: wget -nd --no-parent -A "*.gz" -A "*.sql" -r "https://www.mirbase.org/ftp/CURRENT/database_files/"
-      -P download/
+    cmd: bash stages/00_download.sh
+    deps:
+    - path: stages/00_download.sh
+      hash: md5
+      md5: 326bcab44ec2b08036c166a850eed212
+      size: 356
     outs:
     - path: download/
-      md5: a9cc4d61a93fb5ed77e8ecf76825744d.dir
-      size: 4235992
-      nfiles: 19
+      hash: md5
+      md5: 0c1a99e6726d7e33a3c21582f98a164d.dir
+      size: 60033082
+      nfiles: 37
   process:
-    cmd: Rscript R/process.R
+    cmd: Rscript stages/01_process.R && python3 stages/02_process_embl.py
+    deps:
+    - path: download/
+      hash: md5
+      md5: 0c1a99e6726d7e33a3c21582f98a164d.dir
+      size: 60033082
+      nfiles: 37
+    - path: stages/01_process.R
+      hash: md5
+      md5: 19a3b0dfd2951e32f9e89bfc306c9995
+      size: 1146
+    - path: stages/02_process_embl.py
+      hash: md5
+      md5: 12ecd3379c05487d6109e961843493f8
+      size: 479
     outs:
     - path: brick/
       hash: md5
-      md5: b9786b609aa4e8cb2858cbe765c57376.dir
-      size: 8094090
-      nfiles: 17
+      md5: 839497b2761e88999b195e1ef5d3b727.dir
+      size: 13889587
+      nfiles: 34
+  process_embl:
+    cmd: python3 stages/02_process_embl.py
+    deps:
+    - path: download/
+      hash: md5
+      md5: 0c1a99e6726d7e33a3c21582f98a164d.dir
+      size: 60033082
+      nfiles: 37
+    - path: stages/02_process_embl.py
+      hash: md5
+      md5: 2e3ea1c0157933569db420987230a4cb
+      size: 552
